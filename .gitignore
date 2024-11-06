@@ -1,0 +1,13 @@
+# 忽略 IDE 配置文件夹
+.vscode/
+.idea/
+
+# 忽略其他不必要的文件
+*.zip
+*.mp4
+*.zip
+# 忽略特定目录
+doromitory-back-master/.idea/
+doromitory-front-maste/.idea/
+content/*.zip
+vue001-宿舍管理系统讲解/
