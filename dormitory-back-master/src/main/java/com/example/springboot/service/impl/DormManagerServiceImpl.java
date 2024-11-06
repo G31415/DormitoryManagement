@@ -51,11 +51,13 @@ public class DormManagerServiceImpl extends ServiceImpl<DormManagerMapper, DormM
     /**
      * 宿管查找
      */
+    @SuppressWarnings("rawtypes")
     @Override
     public Page find(Integer pageNum,Integer pageSize,String search) {
         Page page = new Page<>(pageNum,pageSize);
         QueryWrapper<DormManager> qw = new QueryWrapper<>();
         qw.like("name",search);
+        @SuppressWarnings("unchecked")
         Page dormManagerPage = dormManagerMapper.selectPage(page,qw);
         return dormManagerPage;
     }

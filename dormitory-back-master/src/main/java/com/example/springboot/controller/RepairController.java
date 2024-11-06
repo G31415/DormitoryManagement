@@ -61,6 +61,7 @@ public class RepairController {
     public Result<?> findPage(@RequestParam(defaultValue = "1") Integer pageNum,
                               @RequestParam(defaultValue = "10") Integer pageSize,
                               @RequestParam(defaultValue = "") String search) {
+        @SuppressWarnings("rawtypes")
         Page page = repairService.find(pageNum,pageSize,search);
         if(page != null) {
             return Result.success(page);
@@ -78,6 +79,7 @@ public class RepairController {
                                     @RequestParam(defaultValue = "") String search,
                                     @PathVariable String name) {
         System.out.println(name);
+        @SuppressWarnings("rawtypes")
         Page page = repairService.individualFind(pageNum,pageSize,search,name);
         if(page != null) {
             return Result.success(page);

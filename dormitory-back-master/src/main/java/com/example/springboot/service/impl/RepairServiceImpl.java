@@ -35,21 +35,25 @@ public class RepairServiceImpl extends ServiceImpl<RepairMapper, Repair> impleme
     /**
      * 查找订单
      */
+    @SuppressWarnings("rawtypes")
     @Override
     public Page find(Integer pageNum,Integer pageSize,String search) {
         Page page = new Page<>(pageNum,pageSize);
         QueryWrapper<Repair> qw = new QueryWrapper<>();
         qw.like("title",search);
+        @SuppressWarnings("unchecked")
         Page orderPage = repairMapper.selectPage(page,qw);
         return orderPage;
     }
     
+    @SuppressWarnings("rawtypes")
     @Override
     public Page individualFind(Integer pageNum,Integer pageSize,String search,String name) {
         Page page = new Page<>(pageNum,pageSize);
         QueryWrapper<Repair> qw = new QueryWrapper<>();
         qw.like("title",search);
         qw.eq("repairer",name);
+        @SuppressWarnings("unchecked")
         Page orderPage = repairMapper.selectPage(page,qw);
         return orderPage;
     }

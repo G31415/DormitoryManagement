@@ -36,11 +36,13 @@ public class DormBuildImpl extends ServiceImpl<DormBuildMapper, DormBuild> imple
     /**
      * 楼宇查找
      */
+    @SuppressWarnings("rawtypes")
     @Override
     public Page find(Integer pageNum,Integer pageSize,String search) {
         Page page = new Page<>(pageNum,pageSize);
         QueryWrapper<DormBuild> qw = new QueryWrapper<>();
         qw.like("DormBuild_id",search);
+        @SuppressWarnings("unchecked")
         Page buildingPage = dormBuildMapper.selectPage(page,qw);
         return buildingPage;
     }

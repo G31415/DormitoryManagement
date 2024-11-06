@@ -62,6 +62,7 @@ public class DormRoomController {
     public Result<?> findPage(@RequestParam(defaultValue = "1") Integer pageNum,
                               @RequestParam(defaultValue = "10") Integer pageSize,
                               @RequestParam(defaultValue = "") String search) {
+        @SuppressWarnings("rawtypes")
         Page page = dormRoomService.find(pageNum,pageSize,search);
         if(page != null) {
             return Result.success(page);
@@ -127,6 +128,7 @@ public class DormRoomController {
      */
     @GetMapping("/getEachBuildingStuNum/{num}")
     public Result<?> getEachBuildingStuNum(@PathVariable int num) {
+        @SuppressWarnings({ "rawtypes", "unchecked" })
         ArrayList<Long> arrayList = new ArrayList();
         for(int i = 1; i <= num; i++) {
             Long eachBuildingStuNum = dormRoomService.getEachBuildingStuNum(i);

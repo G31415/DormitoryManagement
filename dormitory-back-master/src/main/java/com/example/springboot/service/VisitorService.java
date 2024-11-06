@@ -13,6 +13,7 @@ public interface VisitorService extends IService<Visitor> {
     int addNewVisitor(Visitor visitor);
     
     //查询
+    @SuppressWarnings("rawtypes")
     Page find(Integer pageNum,Integer pageSize,String search);
     
     //更新订单信息

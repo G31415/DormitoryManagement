@@ -16,6 +16,7 @@ public interface StudentService extends IService<Student> {
     int addNewStudent(Student student);
     
     //查询学生
+    @SuppressWarnings("rawtypes")
     Page find(Integer pageNum,Integer pageSize,String search);
     
     //更新学生信息

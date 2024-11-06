@@ -16,6 +16,7 @@ public interface NoticeService extends IService<Notice> {
     int addNewNotice(Notice notice);
     
     //查询
+    @SuppressWarnings("rawtypes")
     Page find(Integer pageNum,Integer pageSize,String search);
     
     //更新通知信息

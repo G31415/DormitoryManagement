@@ -36,11 +36,13 @@ public class NoticeServiceImpl extends ServiceImpl<NoticeMapper, Notice> impleme
     /**
      * 公告查找
      */
+    @SuppressWarnings("rawtypes")
     @Override
     public Page find(Integer pageNum,Integer pageSize,String search) {
         Page page = new Page<>(pageNum,pageSize);
         QueryWrapper<Notice> qw = new QueryWrapper<>();
         qw.like("title",search);
+        @SuppressWarnings("unchecked")
         Page noticePage = noticeMapper.selectPage(page,qw);
         return noticePage;
     }

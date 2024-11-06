@@ -63,6 +63,7 @@ public class DormManagerController {
     public Result<?> findPage(@RequestParam(defaultValue = "1") Integer pageNum,
                               @RequestParam(defaultValue = "10") Integer pageSize,
                               @RequestParam(defaultValue = "") String search) {
+        @SuppressWarnings("rawtypes")
         Page page = dormManagerService.find(pageNum,pageSize,search);
         if(page != null) {
             return Result.success(page);

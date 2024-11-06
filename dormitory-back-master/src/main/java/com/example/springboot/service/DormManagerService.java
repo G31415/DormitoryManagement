@@ -16,6 +16,7 @@ public interface DormManagerService extends IService<DormManager> {
     int addNewDormManager(DormManager dormManager);
     
     //查询学生
+    @SuppressWarnings("rawtypes")
     Page find(Integer pageNum,Integer pageSize,String search);
     
     //更新学生信息

@@ -16,6 +16,7 @@ public interface DormRoomService extends IService<DormRoom> {
     int addNewRoom(DormRoom dormRoom);
     
     //查询房间
+    @SuppressWarnings("rawtypes")
     Page find(Integer pageNum,Integer pageSize,String search);
     
     //更新房间信息

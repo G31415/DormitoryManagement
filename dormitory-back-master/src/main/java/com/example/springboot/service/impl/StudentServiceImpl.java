@@ -50,11 +50,13 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> impl
     /**
      * 分页查询学生
      */
+    @SuppressWarnings("rawtypes")
     @Override
     public Page find(Integer pageNum,Integer pageSize,String search) {
         Page page = new Page<>(pageNum,pageSize);
         QueryWrapper<Student> qw = new QueryWrapper<>();
         qw.like("name",search);
+        @SuppressWarnings("unchecked")
         Page studentPage = studentMapper.selectPage(page,qw);
         return studentPage;
     }

@@ -29,11 +29,13 @@ public class AdjustRoomServiceImpl extends ServiceImpl<AdjustRoomMapper, AdjustR
     /**
      * 查找调宿申请
      */
+    @SuppressWarnings("rawtypes")
     @Override
     public Page find(Integer pageNum,Integer pageSize,String search) {
         Page page = new Page<>(pageNum,pageSize);
         QueryWrapper<AdjustRoom> qw = new QueryWrapper<>();
         qw.like("username",search);
+        @SuppressWarnings("unchecked")
         Page orderPage = adjustRoomMapper.selectPage(page,qw);
         return orderPage;
     }

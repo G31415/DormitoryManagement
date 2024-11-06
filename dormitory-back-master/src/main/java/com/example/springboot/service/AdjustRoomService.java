@@ -7,6 +7,7 @@ import com.example.springboot.entity.AdjustRoom;
 public interface AdjustRoomService extends IService<AdjustRoom> {
     
     //查询调宿申请
+    @SuppressWarnings("rawtypes")
     Page find(Integer pageNum,Integer pageSize,String search);
     
     //删除调宿申请

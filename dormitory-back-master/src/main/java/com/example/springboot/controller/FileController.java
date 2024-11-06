@@ -22,10 +22,8 @@ import java.util.Base64;
 @RequestMapping("/files")
 public class FileController {
     
-    private static final String ip = "http://localhost";
     static String rootFilePath = System.getProperty("user.dir") + "/springboot/src/main/resources/files/";
     static String originalFilename = "";
-    private String port = "9090";
     @Resource
     private StudentService studentService;
     
@@ -118,6 +116,7 @@ public class FileController {
         return Result.success(null);
     }
     
+    @SuppressWarnings("unused")
     private Result<?> getImage(String path) throws IOException {
         
         //读取图片变成字节数组

@@ -17,6 +17,7 @@ public class Result<T> {
         this.data = data;
     }
     
+    @SuppressWarnings("rawtypes")
     public static Result success() {
         Result result = new Result<>();
         result.setCode("0");
@@ -32,6 +33,7 @@ public class Result<T> {
         return result;
     }
     
+    @SuppressWarnings("rawtypes")
     public static Result error(String code,String msg) {
         Result result = new Result<>();
         result.setCode(code);

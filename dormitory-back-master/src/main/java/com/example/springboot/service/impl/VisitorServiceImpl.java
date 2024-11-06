@@ -31,11 +31,13 @@ public class VisitorServiceImpl extends ServiceImpl<VisitorMapper, Visitor> impl
     /**
      * 访客查询
      */
+    @SuppressWarnings("rawtypes")
     @Override
     public Page find(Integer pageNum,Integer pageSize,String search) {
         Page page = new Page<>(pageNum,pageSize);
         QueryWrapper<Visitor> qw = new QueryWrapper<>();
         qw.like("name",search);
+        @SuppressWarnings("unchecked")
         Page visitorPage = visitorMapper.selectPage(page,qw);
         return visitorPage;
     }
