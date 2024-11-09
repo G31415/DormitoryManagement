@@ -60,9 +60,10 @@ public class DormBuildController {
      * 楼宇查找
      */
     @GetMapping("/find")
+    @SuppressWarnings({ "rawtypes" })
     public Result<?> findPage(@RequestParam(defaultValue = "1") Integer pageNum,
-                              @RequestParam(defaultValue = "10") Integer pageSize,
-                              @RequestParam(defaultValue = "") String search) {
+            @RequestParam(defaultValue = "10") Integer pageSize,
+            @RequestParam(defaultValue = "") String search) {
         Page page = dormBuildService.find(pageNum, pageSize, search);
         if (page != null) {
             return Result.success(page);
@@ -77,7 +78,8 @@ public class DormBuildController {
     @GetMapping("/getBuildingName")
     public Result<?> getBuildingName() {
         List<DormBuild> buildingName = dormBuildService.getBuildingId();
-        List<Integer> buildingId = buildingName.stream().map(dormBuildId -> dormBuildId.getDormBuildId()).collect(Collectors.toList());
+        List<Integer> buildingId = buildingName.stream().map(dormBuildId -> dormBuildId.getDormBuildId())
+                .collect(Collectors.toList());
 
         if (!buildingId.isEmpty()) {
             return Result.success(buildingId);

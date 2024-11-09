@@ -10,10 +10,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
-/**
- * @author AthenaKnovesp
- */
-
 @Service
 public class RepairServiceImpl extends ServiceImpl<RepairMapper, Repair> implements RepairService {
 
@@ -36,6 +32,7 @@ public class RepairServiceImpl extends ServiceImpl<RepairMapper, Repair> impleme
      * 查找订单
      */
     @Override
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     public Page find(Integer pageNum, Integer pageSize, String search) {
         Page page = new Page<>(pageNum, pageSize);
         QueryWrapper<Repair> qw = new QueryWrapper<>();
@@ -45,6 +42,7 @@ public class RepairServiceImpl extends ServiceImpl<RepairMapper, Repair> impleme
     }
 
     @Override
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     public Page individualFind(Integer pageNum, Integer pageSize, String search, String name) {
         Page page = new Page<>(pageNum, pageSize);
         QueryWrapper<Repair> qw = new QueryWrapper<>();

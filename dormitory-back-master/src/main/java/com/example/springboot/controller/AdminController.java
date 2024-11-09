@@ -28,7 +28,7 @@ public class AdminController {
         Object o = adminService.adminLogin(user.getUsername(), user.getPassword());
         if (o != null) {
             System.out.println(o);
-            //存入session
+            // 存入session
             session.setAttribute("Identity", "admin");
             session.setAttribute("User", o);
             return Result.success(o);

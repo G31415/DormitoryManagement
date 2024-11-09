@@ -6,21 +6,19 @@ import com.example.springboot.entity.DormBuild;
 
 import java.util.List;
 
-/**
- * @author AthenaKnovesp
- */
+@SuppressWarnings({ "rawtypes" })
 public interface DormBuildService extends IService<DormBuild> {
 
-    //新增楼宇
+    // 新增楼宇
     int addNewBuilding(DormBuild dormBuild);
 
-    //查询楼宇
+    // 查询楼宇
     Page find(Integer pageNum, Integer pageSize, String search);
 
-    //更新楼宇信息
+    // 更新楼宇信息
     int updateNewBuilding(DormBuild dormBuild);
 
-    //删除楼宇信息
+    // 删除楼宇信息
     int deleteBuilding(Integer id);
 
     List<DormBuild> getBuildingId();

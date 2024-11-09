@@ -23,9 +23,11 @@ import java.util.Base64;
 @RequestMapping("/files")
 public class FileController {
 
+    @SuppressWarnings("unused")
     private static final String ip = "http://localhost";
     static String rootFilePath = System.getProperty("user.dir") + "/springboot/src/main/resources/files/";
     static String originalFilename = "";
+    @SuppressWarnings("unused")
     private String port = "9090";
     @Resource
     private StudentService studentService;
@@ -41,20 +43,20 @@ public class FileController {
      */
     @PostMapping("/upload")
     public Result<?> upload(MultipartFile file) throws IOException {
-        //获取文件名
+        // 获取文件名
         originalFilename = file.getOriginalFilename();
         System.out.println(originalFilename);
-        //获取文件尾缀
+        // 获取文件尾缀
         String fileType = originalFilename.substring(originalFilename.lastIndexOf("."), originalFilename.length());
 
-        //重命名
+        // 重命名
         String uid = new UID().produceUID();
         originalFilename = uid + fileType;
         System.out.println(originalFilename);
-        //存储位置
+        // 存储位置
         String targetPath = rootFilePath + originalFilename;
         System.out.println(targetPath);
-        //获取字节流
+        // 获取字节流
         FileUtil.writeBytes(file.getBytes(), targetPath);
 
         return Result.success("上传成功");
@@ -114,14 +116,15 @@ public class FileController {
         System.out.println(filename);
         String path = rootFilePath + filename;
         System.out.println(path);
-//        目前隐藏了头像的文件上传功能-不要开启
-//        return Result.success(getImage(path));
+        // 目前隐藏了头像的文件上传功能-不要开启
+        // return Result.success(getImage(path));
         return Result.success(null);
     }
 
+    @SuppressWarnings("unused")
     private Result<?> getImage(String path) throws IOException {
 
-        //读取图片变成字节数组
+        // 读取图片变成字节数组
         FileInputStream fileInputStream = new FileInputStream(path);
 
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -131,14 +134,14 @@ public class FileController {
             bos.write(b, 0, len);
         }
         byte[] fileByte = bos.toByteArray();
-        
+
         Base64.Encoder encoder = Base64.getEncoder();
         String data = encoder.encodeToString(fileByte);
-        
-        //进行base64编码
+
+        // 进行base64编码
         // BASE64Encoder encoder = new BASE64Encoder();
         // String data = encoder.encode(fileByte);
-        
+
         fileInputStream.close();
         bos.close();
         return Result.success(data);

@@ -11,12 +11,8 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 
-/**
- * @author AthenaKnovesp
- */
 @Service
 public class DormBuildImpl extends ServiceImpl<DormBuildMapper, DormBuild> implements DormBuildService {
-
 
     /**
      * 注入DAO层对象
@@ -37,6 +33,7 @@ public class DormBuildImpl extends ServiceImpl<DormBuildMapper, DormBuild> imple
      * 楼宇查找
      */
     @Override
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     public Page find(Integer pageNum, Integer pageSize, String search) {
         Page page = new Page<>(pageNum, pageSize);
         QueryWrapper<DormBuild> qw = new QueryWrapper<>();

@@ -19,7 +19,6 @@ public class AdjustRoomController {
     @Resource
     private DormRoomService dormRoomService;
 
-
     /**
      * 添加订单
      */
@@ -34,7 +33,6 @@ public class AdjustRoomController {
         }
     }
 
-
     /**
      * 更新订单
      */
@@ -48,7 +46,7 @@ public class AdjustRoomController {
                 return Result.error("-1", "重复操作");
             }
         }
-        //更新调宿表信息
+        // 更新调宿表信息
         int i = adjustRoomService.updateApply(adjustRoom);
         if (i == 1) {
             return Result.success();
@@ -74,9 +72,10 @@ public class AdjustRoomController {
      * 查找订单
      */
     @GetMapping("/find")
+    @SuppressWarnings({ "rawtypes" })
     public Result<?> findPage(@RequestParam(defaultValue = "1") Integer pageNum,
-                              @RequestParam(defaultValue = "10") Integer pageSize,
-                              @RequestParam(defaultValue = "") String search) {
+            @RequestParam(defaultValue = "10") Integer pageSize,
+            @RequestParam(defaultValue = "") String search) {
         Page page = adjustRoomService.find(pageNum, pageSize, search);
         if (page != null) {
             return Result.success(page);

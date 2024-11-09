@@ -59,9 +59,10 @@ public class DormRoomController {
      * 查找房间
      */
     @GetMapping("/find")
+    @SuppressWarnings({ "rawtypes" })
     public Result<?> findPage(@RequestParam(defaultValue = "1") Integer pageNum,
-                              @RequestParam(defaultValue = "10") Integer pageSize,
-                              @RequestParam(defaultValue = "") String search) {
+            @RequestParam(defaultValue = "10") Integer pageSize,
+            @RequestParam(defaultValue = "") String search) {
         Page page = dormRoomService.find(pageNum, pageSize, search);
         if (page != null) {
             return Result.success(page);
@@ -87,7 +88,8 @@ public class DormRoomController {
      * 删除床位学生信息
      */
     @DeleteMapping("/delete/{bedName}/{dormRoomId}/{calCurrentNum}")
-    public Result<?> deleteBedInfo(@PathVariable String bedName, @PathVariable Integer dormRoomId, @PathVariable int calCurrentNum) {
+    public Result<?> deleteBedInfo(@PathVariable String bedName, @PathVariable Integer dormRoomId,
+            @PathVariable int calCurrentNum) {
         int i = dormRoomService.deleteBedInfo(bedName, dormRoomId, calCurrentNum);
         if (i == 1) {
             return Result.success();
@@ -125,8 +127,10 @@ public class DormRoomController {
     /**
      * 住宿分布人数
      */
+    @SuppressWarnings({ "rawtypes" })
     @GetMapping("/getEachBuildingStuNum/{num}")
     public Result<?> getEachBuildingStuNum(@PathVariable int num) {
+        @SuppressWarnings("unchecked")
         ArrayList<Long> arrayList = new ArrayList();
         for (int i = 1; i <= num; i++) {
             Long eachBuildingStuNum = dormRoomService.getEachBuildingStuNum(i);

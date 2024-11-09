@@ -1,6 +1,5 @@
 package com.example.springboot.controller;
 
-
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.springboot.common.Result;
 import com.example.springboot.entity.Notice;
@@ -59,10 +58,11 @@ public class NoticeController {
     /**
      * 公告查找
      */
+    @SuppressWarnings("rawtypes")
     @GetMapping("/find")
     public Result<?> findPage(@RequestParam(defaultValue = "1") Integer pageNum,
-                              @RequestParam(defaultValue = "10") Integer pageSize,
-                              @RequestParam(defaultValue = "") String search) {
+            @RequestParam(defaultValue = "10") Integer pageSize,
+            @RequestParam(defaultValue = "") String search) {
         Page page = noticeService.find(pageNum, pageSize, search);
         if (page != null) {
             return Result.success(page);

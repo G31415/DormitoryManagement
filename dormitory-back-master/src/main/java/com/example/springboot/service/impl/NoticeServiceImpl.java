@@ -11,12 +11,8 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 
-/**
- * @author AthenaKnovesp
- */
 @Service
 public class NoticeServiceImpl extends ServiceImpl<NoticeMapper, Notice> implements NoticeService {
-
 
     /**
      * 注入DAO层对象
@@ -37,6 +33,7 @@ public class NoticeServiceImpl extends ServiceImpl<NoticeMapper, Notice> impleme
      * 公告查找
      */
     @Override
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     public Page find(Integer pageNum, Integer pageSize, String search) {
         Page page = new Page<>(pageNum, pageSize);
         QueryWrapper<Notice> qw = new QueryWrapper<>();

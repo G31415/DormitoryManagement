@@ -2,6 +2,7 @@ package com.example.springboot.common;
 
 public class JudgeBedName {
 
+    @SuppressWarnings("unused")
     private static String bedName;
 
     public static String getBedName(int num) {

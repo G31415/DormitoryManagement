@@ -60,9 +60,10 @@ public class DormManagerController {
      * 宿管查找
      */
     @GetMapping("/find")
+    @SuppressWarnings({ "rawtypes" })
     public Result<?> findPage(@RequestParam(defaultValue = "1") Integer pageNum,
-                              @RequestParam(defaultValue = "10") Integer pageSize,
-                              @RequestParam(defaultValue = "") String search) {
+            @RequestParam(defaultValue = "10") Integer pageSize,
+            @RequestParam(defaultValue = "") String search) {
         Page page = dormManagerService.find(pageNum, pageSize, search);
         if (page != null) {
             return Result.success(page);
@@ -80,7 +81,7 @@ public class DormManagerController {
         Object o = dormManagerService.dormManagerLogin(user.getUsername(), user.getPassword());
         if (o != null) {
             System.out.println(o);
-            //存入session
+            // 存入session
             session.setAttribute("Identity", "dormManager");
             session.setAttribute("User", o);
             return Result.success(o);

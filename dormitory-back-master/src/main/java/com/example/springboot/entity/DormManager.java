@@ -8,7 +8,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @author AthenaKnovesp
  * <p>
  * 宿舍管理员
  */

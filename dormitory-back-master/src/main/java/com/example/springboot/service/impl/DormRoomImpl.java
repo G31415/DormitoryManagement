@@ -15,10 +15,6 @@ import javax.annotation.Resource;
 
 import static com.example.springboot.common.CalPeopleNum.calNum;
 
-
-/**
- * @author AthenaKnovesp
- */
 @Service
 public class DormRoomImpl extends ServiceImpl<DormRoomMapper, DormRoom> implements DormRoomService {
 
@@ -49,6 +45,7 @@ public class DormRoomImpl extends ServiceImpl<DormRoomMapper, DormRoom> implemen
      * 查找房间
      */
     @Override
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     public Page find(Integer pageNum, Integer pageSize, String search) {
         Page page = new Page<>(pageNum, pageSize);
         QueryWrapper<DormRoom> qw = new QueryWrapper<>();
@@ -78,7 +75,9 @@ public class DormRoomImpl extends ServiceImpl<DormRoomMapper, DormRoom> implemen
     /**
      * 删除床位上的学生信息
      */
+
     @Override
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     public int deleteBedInfo(String bedName, Integer dormRoomId, int calCurrentNum) {
         UpdateWrapper updateWrapper = new UpdateWrapper();
         updateWrapper.eq("dormroom_id", dormRoomId);
@@ -93,6 +92,7 @@ public class DormRoomImpl extends ServiceImpl<DormRoomMapper, DormRoom> implemen
      * 床位信息，查询该学生是否已由床位
      */
     @Override
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     public DormRoom judgeHadBed(String username) {
         QueryWrapper qw = new QueryWrapper();
         qw.eq("first_bed", username);
@@ -166,16 +166,17 @@ public class DormRoomImpl extends ServiceImpl<DormRoomMapper, DormRoom> implemen
      * 根据调宿申请表对房间表内的学生床位进行调整
      */
     @Override
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     public int adjustRoomUpdate(AdjustRoom adjustRoom) {
-        //调宿人
+        // 调宿人
         String username = adjustRoom.getUsername();
-        //当前房间号
+        // 当前房间号
         int currentRoomId = adjustRoom.getCurrentRoomId();
-        //当前床位名称
+        // 当前床位名称
         String currentBedName = JudgeBedName.getBedName(adjustRoom.getCurrentBedId());
-        //目标房间号
+        // 目标房间号
         int towardsRoomId = adjustRoom.getTowardsRoomId();
-        //目标目标房间号
+        // 目标目标房间号
         String towardsBedName = JudgeBedName.getBedName(adjustRoom.getTowardsBedId());
 
         QueryWrapper qw = new QueryWrapper();
@@ -208,11 +209,11 @@ public class DormRoomImpl extends ServiceImpl<DormRoomMapper, DormRoom> implemen
         return -1;
     }
 
-
     /**
      * 检查该房间是否满了
      */
     @Override
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     public DormRoom checkRoomState(Integer dormRoomId) {
         QueryWrapper qw = new QueryWrapper();
         qw.eq("dormroom_id", dormRoomId);
@@ -230,11 +231,11 @@ public class DormRoomImpl extends ServiceImpl<DormRoomMapper, DormRoom> implemen
         return dormRoom;
     }
 
-
     /**
      * 检查床位是否有人
      */
     @Override
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     public DormRoom checkBedState(Integer dormRoomId, int bedNum) {
         QueryWrapper qw = new QueryWrapper();
         qw.eq("dormroom_id", dormRoomId);
@@ -242,6 +243,5 @@ public class DormRoomImpl extends ServiceImpl<DormRoomMapper, DormRoom> implemen
         DormRoom dormRoom = dormRoomMapper.selectOne(qw);
         return dormRoom;
     }
-
 
 }

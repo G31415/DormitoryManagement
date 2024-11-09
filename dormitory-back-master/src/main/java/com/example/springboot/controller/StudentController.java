@@ -60,10 +60,11 @@ public class StudentController {
     /**
      * 查找学生信息
      */
+    @SuppressWarnings("rawtypes")
     @GetMapping("/find")
     public Result<?> findPage(@RequestParam(defaultValue = "1") Integer pageNum,
-                              @RequestParam(defaultValue = "10") Integer pageSize,
-                              @RequestParam(defaultValue = "") String search) {
+            @RequestParam(defaultValue = "10") Integer pageSize,
+            @RequestParam(defaultValue = "") String search) {
         Page page = studentService.find(pageNum, pageSize, search);
         if (page != null) {
             return Result.success(page);
@@ -82,7 +83,7 @@ public class StudentController {
         Object o = studentService.stuLogin(user.getUsername(), user.getPassword());
         if (o != null) {
             System.out.println(o);
-            //存入session
+            // 存入session
             session.setAttribute("Identity", "stu");
             session.setAttribute("User", o);
             return Result.success(o);
@@ -103,7 +104,6 @@ public class StudentController {
             return Result.error("-1", "查询失败");
         }
     }
-
 
     /**
      * 床位信息，查询是否存在该学生

@@ -10,9 +10,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
-/**
- * @author AthenaKnovesp
- */
 @Service
 public class VisitorServiceImpl extends ServiceImpl<VisitorMapper, Visitor> implements VisitorService {
 
@@ -32,6 +29,7 @@ public class VisitorServiceImpl extends ServiceImpl<VisitorMapper, Visitor> impl
      * 访客查询
      */
     @Override
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     public Page find(Integer pageNum, Integer pageSize, String search) {
         Page page = new Page<>(pageNum, pageSize);
         QueryWrapper<Visitor> qw = new QueryWrapper<>();

@@ -57,10 +57,11 @@ public class VisitorController {
     /**
      * 访客查询
      */
+    @SuppressWarnings("rawtypes")
     @GetMapping("/find")
     public Result<?> findPage(@RequestParam(defaultValue = "1") Integer pageNum,
-                              @RequestParam(defaultValue = "10") Integer pageSize,
-                              @RequestParam(defaultValue = "") String search) {
+            @RequestParam(defaultValue = "10") Integer pageSize,
+            @RequestParam(defaultValue = "") String search) {
         Page page = visitorService.find(pageNum, pageSize, search);
         if (page != null) {
             return Result.success(page);

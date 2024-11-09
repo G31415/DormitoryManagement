@@ -57,10 +57,11 @@ public class RepairController {
     /**
      * 查找订单
      */
+    @SuppressWarnings("rawtypes")
     @GetMapping("/find")
     public Result<?> findPage(@RequestParam(defaultValue = "1") Integer pageNum,
-                              @RequestParam(defaultValue = "10") Integer pageSize,
-                              @RequestParam(defaultValue = "") String search) {
+            @RequestParam(defaultValue = "10") Integer pageSize,
+            @RequestParam(defaultValue = "") String search) {
         Page page = repairService.find(pageNum, pageSize, search);
         if (page != null) {
             return Result.success(page);
@@ -72,11 +73,12 @@ public class RepairController {
     /**
      * 个人申报报修 分页查询
      */
+    @SuppressWarnings("rawtypes")
     @GetMapping("/find/{name}")
     public Result<?> individualFind(@RequestParam(defaultValue = "1") Integer pageNum,
-                                    @RequestParam(defaultValue = "10") Integer pageSize,
-                                    @RequestParam(defaultValue = "") String search,
-                                    @PathVariable String name) {
+            @RequestParam(defaultValue = "10") Integer pageSize,
+            @RequestParam(defaultValue = "") String search,
+            @PathVariable String name) {
         System.out.println(name);
         Page page = repairService.individualFind(pageNum, pageSize, search, name);
         if (page != null) {

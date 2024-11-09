@@ -10,9 +10,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
-/**
- * @author AthenaKnovesp
- */
 @Service
 public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> implements StudentService {
 
@@ -51,6 +48,7 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> impl
      * 分页查询学生
      */
     @Override
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     public Page find(Integer pageNum, Integer pageSize, String search) {
         Page page = new Page<>(pageNum, pageSize);
         QueryWrapper<Student> qw = new QueryWrapper<>();
@@ -76,7 +74,6 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> impl
         int i = studentMapper.deleteById(username);
         return i;
     }
-
 
     /**
      * 主页顶部：学生统计

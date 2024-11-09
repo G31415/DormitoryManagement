@@ -10,10 +10,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
-/**
- * @author AthenaKnovesp
- */
-
 @Service
 public class DormManagerServiceImpl extends ServiceImpl<DormManagerMapper, DormManager> implements DormManagerService {
 
@@ -52,6 +48,7 @@ public class DormManagerServiceImpl extends ServiceImpl<DormManagerMapper, DormM
      * 宿管查找
      */
     @Override
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     public Page find(Integer pageNum, Integer pageSize, String search) {
         Page page = new Page<>(pageNum, pageSize);
         QueryWrapper<DormManager> qw = new QueryWrapper<>();
@@ -77,6 +74,5 @@ public class DormManagerServiceImpl extends ServiceImpl<DormManagerMapper, DormM
         int i = dormManagerMapper.deleteById(username);
         return i;
     }
-
 
 }
