@@ -8,24 +8,22 @@ import com.example.springboot.entity.Repair;
  * @author AthenaKnovesp
  */
 public interface RepairService extends IService<Repair> {
-    
+
     //显示订单数量
     public int showOrderNum();
-    
+
     //新增订单
     int addNewOrder(Repair repair);
-    
+
     //查询
-    @SuppressWarnings("rawtypes")
-    Page find(Integer pageNum,Integer pageSize,String search);
-    
+    Page find(Integer pageNum, Integer pageSize, String search);
+
     //查询
-    @SuppressWarnings("rawtypes")
-    Page individualFind(Integer pageNum,Integer pageSize,String search,String name);
-    
+    Page individualFind(Integer pageNum, Integer pageSize, String search, String name);
+
     //更新订单信息
     int updateNewOrder(Repair repair);
-    
+
     //删除订单
     int deleteOrder(Integer id);
 }

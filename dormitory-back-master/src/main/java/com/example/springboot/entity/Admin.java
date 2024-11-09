@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 
 @TableName(value = "admin")
 public class Admin {
-    
+
     @TableId(value = "username")
     private String username;
     @TableField(value = "password")

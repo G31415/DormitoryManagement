@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 
 @TableName(value = "repair")
 public class Repair {
-    
+
     @TableId(value = "id")
     private Integer id;
     @TableField("repairer")

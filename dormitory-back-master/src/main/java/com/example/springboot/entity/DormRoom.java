@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 
 @TableName(value = "dorm_room")
 public class DormRoom {
-    
+
     @TableId(value = "dormroom_id")
     private Integer dormRoomId;
     @TableField("dormbuild_id")
@@ -35,5 +35,5 @@ public class DormRoom {
     private String thirdBed;
     @TableField("fourth_bed")
     private String fourthBed;
-    
+
 }

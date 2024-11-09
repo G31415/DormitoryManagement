@@ -14,29 +14,29 @@ import javax.annotation.Resource;
  */
 @Service
 public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements AdminService {
-    
+
     /**
      * 注入DAO层对象
      */
     @Resource
     private AdminMapper adminMapper;
-    
+
     /**
      * 管理员登录
      */
     @Override
-    public Admin adminLogin(String username,String password) {
+    public Admin adminLogin(String username, String password) {
         QueryWrapper<Admin> qw = new QueryWrapper<>();
-        qw.eq("username",username);
-        qw.eq("password",password);
+        qw.eq("username", username);
+        qw.eq("password", password);
         Admin admin = adminMapper.selectOne(qw);
-        if(admin != null) {
+        if (admin != null) {
             return admin;
         } else {
             return null;
         }
     }
-    
+
     /**
      * 管理员信息更新
      */
@@ -45,5 +45,5 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
         int i = adminMapper.updateById(admin);
         return i;
     }
-    
+
 }

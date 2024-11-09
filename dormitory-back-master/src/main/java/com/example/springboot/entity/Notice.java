@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 
 @TableName(value = "notice")
 public class Notice {
-    
+
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
     @TableField("title")

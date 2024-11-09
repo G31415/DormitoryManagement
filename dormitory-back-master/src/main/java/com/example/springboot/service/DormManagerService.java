@@ -8,20 +8,19 @@ import com.example.springboot.entity.DormManager;
  * @author AthenaKnovesp
  */
 public interface DormManagerService extends IService<DormManager> {
-    
+
     //学生登陆
-    DormManager dormManagerLogin(String username,String password);
-    
+    DormManager dormManagerLogin(String username, String password);
+
     //新增学生
     int addNewDormManager(DormManager dormManager);
-    
+
     //查询学生
-    @SuppressWarnings("rawtypes")
-    Page find(Integer pageNum,Integer pageSize,String search);
-    
+    Page find(Integer pageNum, Integer pageSize, String search);
+
     //更新学生信息
     int updateNewDormManager(DormManager dormManager);
-    
+
     //删除学生信息
     int deleteDormManager(String username);
 }

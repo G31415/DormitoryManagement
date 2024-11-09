@@ -15,10 +15,10 @@ import javax.annotation.Resource;
  */
 @Service
 public class VisitorServiceImpl extends ServiceImpl<VisitorMapper, Visitor> implements VisitorService {
-    
+
     @Resource
     private VisitorMapper visitorMapper;
-    
+
     /**
      * 访客添加
      */
@@ -27,21 +27,19 @@ public class VisitorServiceImpl extends ServiceImpl<VisitorMapper, Visitor> impl
         int insert = visitorMapper.insert(visitor);
         return insert;
     }
-    
+
     /**
      * 访客查询
      */
-    @SuppressWarnings("rawtypes")
     @Override
-    public Page find(Integer pageNum,Integer pageSize,String search) {
-        Page page = new Page<>(pageNum,pageSize);
+    public Page find(Integer pageNum, Integer pageSize, String search) {
+        Page page = new Page<>(pageNum, pageSize);
         QueryWrapper<Visitor> qw = new QueryWrapper<>();
-        qw.like("name",search);
-        @SuppressWarnings("unchecked")
-        Page visitorPage = visitorMapper.selectPage(page,qw);
+        qw.like("name", search);
+        Page visitorPage = visitorMapper.selectPage(page, qw);
         return visitorPage;
     }
-    
+
     /**
      * 访客信息更新
      */
@@ -50,7 +48,7 @@ public class VisitorServiceImpl extends ServiceImpl<VisitorMapper, Visitor> impl
         int i = visitorMapper.updateById(visitor);
         return i;
     }
-    
+
     /**
      * 访客删除
      */

@@ -16,13 +16,13 @@ import javax.annotation.Resource;
 
 @Service
 public class RepairServiceImpl extends ServiceImpl<RepairMapper, Repair> implements RepairService {
-    
+
     /**
      * 注入DAO层对象
      */
     @Resource
     private RepairMapper repairMapper;
-    
+
     /**
      * 添加订单
      */
@@ -31,33 +31,29 @@ public class RepairServiceImpl extends ServiceImpl<RepairMapper, Repair> impleme
         int insert = repairMapper.insert(repair);
         return insert;
     }
-    
+
     /**
      * 查找订单
      */
-    @SuppressWarnings("rawtypes")
     @Override
-    public Page find(Integer pageNum,Integer pageSize,String search) {
-        Page page = new Page<>(pageNum,pageSize);
+    public Page find(Integer pageNum, Integer pageSize, String search) {
+        Page page = new Page<>(pageNum, pageSize);
         QueryWrapper<Repair> qw = new QueryWrapper<>();
-        qw.like("title",search);
-        @SuppressWarnings("unchecked")
-        Page orderPage = repairMapper.selectPage(page,qw);
+        qw.like("title", search);
+        Page orderPage = repairMapper.selectPage(page, qw);
         return orderPage;
     }
-    
-    @SuppressWarnings("rawtypes")
+
     @Override
-    public Page individualFind(Integer pageNum,Integer pageSize,String search,String name) {
-        Page page = new Page<>(pageNum,pageSize);
+    public Page individualFind(Integer pageNum, Integer pageSize, String search, String name) {
+        Page page = new Page<>(pageNum, pageSize);
         QueryWrapper<Repair> qw = new QueryWrapper<>();
-        qw.like("title",search);
-        qw.eq("repairer",name);
-        @SuppressWarnings("unchecked")
-        Page orderPage = repairMapper.selectPage(page,qw);
+        qw.like("title", search);
+        qw.eq("repairer", name);
+        Page orderPage = repairMapper.selectPage(page, qw);
         return orderPage;
     }
-    
+
     /**
      * 更新订单
      */
@@ -66,7 +62,7 @@ public class RepairServiceImpl extends ServiceImpl<RepairMapper, Repair> impleme
         int i = repairMapper.updateById(repair);
         return i;
     }
-    
+
     /**
      * 删除订单
      */
@@ -75,7 +71,7 @@ public class RepairServiceImpl extends ServiceImpl<RepairMapper, Repair> impleme
         int i = repairMapper.deleteById(id);
         return i;
     }
-    
+
     /**
      * 首页顶部：报修统计
      */

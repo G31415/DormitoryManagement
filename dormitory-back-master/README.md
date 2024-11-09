@@ -8,15 +8,19 @@
 JDK版本：jdk1.8
 B/S模型-浏览器服务器模型
 
+
 #登录说明
 管理员登录 admin 密码 123456
 
 其余可以登录管理员后去查看相关密码，目前默认密码都是123456
 
+
+
 基于springboot+Vue的学生宿舍管理系统（Java毕业设计）
 
 2023年4月1日22:27:22
 辰兮更新 解决首页控制台报错问题
+
 
 1.项目框架介绍
 后端：SpringBoot
@@ -27,13 +31,14 @@ B/S模型-浏览器服务器模型
 后端框架 SpringBoot 底层就是SSM,就是Java语言
 前端框架 vue +element 底层Javascript HTML； HTML就是我们说的CSS, Javascript就是我们说的Js
 
+
 2.项目是如何开发的
 需求->设计->开发->测试
 文字层面
 
 3.项目阅读的目录结构
 
-为什么要用SpringBoot项目 SpringBoot 底层就是SSM
+为什么要用SpringBoot项目  SpringBoot 底层就是SSM
 
 SpringBoot框架一般分为Controller层、Service层、Mapper层、entity。
 代码阅读顺序性：
@@ -43,13 +48,15 @@ entity实体类
 
 功能就是 增删改查
 
-SSM mybatis ->  mybatisplus
-select
+SSM  mybatis ->  mybatisplus
+select 
 insert
+
 
 4.前端开发的小技巧
 参考官网学习
 https://element.eleme.cn/#/zh-CN/component/installation
+
 
 2023年5月5日21:31:43
 补充讲解
@@ -76,6 +83,7 @@ RepairController和报修相关的
 看请求->根据请求的路径去定位
 
 关于network请求更详细的说明可以百度
+
 
 前端代码如何找?
 根据页面的名称去找和定位

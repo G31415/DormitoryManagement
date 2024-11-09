@@ -16,14 +16,14 @@ import java.util.List;
  */
 @Service
 public class DormBuildImpl extends ServiceImpl<DormBuildMapper, DormBuild> implements DormBuildService {
-    
-    
+
+
     /**
      * 注入DAO层对象
      */
     @Resource
     private DormBuildMapper dormBuildMapper;
-    
+
     /**
      * 楼宇添加
      */
@@ -32,21 +32,19 @@ public class DormBuildImpl extends ServiceImpl<DormBuildMapper, DormBuild> imple
         int insert = dormBuildMapper.insert(dormBuild);
         return insert;
     }
-    
+
     /**
      * 楼宇查找
      */
-    @SuppressWarnings("rawtypes")
     @Override
-    public Page find(Integer pageNum,Integer pageSize,String search) {
-        Page page = new Page<>(pageNum,pageSize);
+    public Page find(Integer pageNum, Integer pageSize, String search) {
+        Page page = new Page<>(pageNum, pageSize);
         QueryWrapper<DormBuild> qw = new QueryWrapper<>();
-        qw.like("DormBuild_id",search);
-        @SuppressWarnings("unchecked")
-        Page buildingPage = dormBuildMapper.selectPage(page,qw);
+        qw.like("DormBuild_id", search);
+        Page buildingPage = dormBuildMapper.selectPage(page, qw);
         return buildingPage;
     }
-    
+
     /**
      * 楼宇信息更新
      */
@@ -55,7 +53,7 @@ public class DormBuildImpl extends ServiceImpl<DormBuildMapper, DormBuild> imple
         int i = dormBuildMapper.updateById(dormBuild);
         return i;
     }
-    
+
     /**
      * 楼宇删除
      */
@@ -64,7 +62,7 @@ public class DormBuildImpl extends ServiceImpl<DormBuildMapper, DormBuild> imple
         int i = dormBuildMapper.deleteById(id);
         return i;
     }
-    
+
     /**
      * 首页 获取建筑名称
      */
@@ -75,5 +73,5 @@ public class DormBuildImpl extends ServiceImpl<DormBuildMapper, DormBuild> imple
         List<DormBuild> dormBuilds = dormBuildMapper.selectList(qw);
         return dormBuilds;
     }
-    
+
 }

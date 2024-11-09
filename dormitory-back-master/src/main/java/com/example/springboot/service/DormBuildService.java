@@ -10,19 +10,18 @@ import java.util.List;
  * @author AthenaKnovesp
  */
 public interface DormBuildService extends IService<DormBuild> {
-    
+
     //新增楼宇
     int addNewBuilding(DormBuild dormBuild);
-    
+
     //查询楼宇
-    @SuppressWarnings("rawtypes")
-    Page find(Integer pageNum,Integer pageSize,String search);
-    
+    Page find(Integer pageNum, Integer pageSize, String search);
+
     //更新楼宇信息
     int updateNewBuilding(DormBuild dormBuild);
-    
+
     //删除楼宇信息
     int deleteBuilding(Integer id);
-    
+
     List<DormBuild> getBuildingId();
 }

@@ -8,7 +8,7 @@ import org.springframework.web.filter.CorsFilter;
 
 @Configuration
 public class CorsConfig {
-    
+
     private CorsConfiguration buildConfig() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.addAllowedOrigin("*"); // 1容许任何域名使用
@@ -16,11 +16,11 @@ public class CorsConfig {
         corsConfiguration.addAllowedMethod("*"); // 3容许任何方法（post、get等）
         return corsConfiguration;
     }
-    
+
     @Bean
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**",buildConfig()); // 4
+        source.registerCorsConfiguration("/**", buildConfig()); // 4
         return new CorsFilter(source);
     }
 }

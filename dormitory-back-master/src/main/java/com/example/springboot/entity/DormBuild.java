@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 
 @TableName(value = "dorm_build")
 public class DormBuild {
-    
+
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
     @TableField("dormbuild_id")

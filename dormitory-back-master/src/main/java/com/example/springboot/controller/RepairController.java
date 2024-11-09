@@ -11,49 +11,49 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping("/repair")
 public class RepairController {
-    
+
     @Resource
     private RepairService repairService;
-    
+
     /**
      * 添加订单
      */
     @PostMapping("/add")
     public Result<?> add(@RequestBody Repair repair) {
         int i = repairService.addNewOrder(repair);
-        if(i == 1) {
+        if (i == 1) {
             return Result.success();
         } else {
-            return Result.error("-1","添加失败");
+            return Result.error("-1", "添加失败");
         }
     }
-    
+
     /**
      * 更新订单
      */
     @PutMapping("/update")
     public Result<?> update(@RequestBody Repair repair) {
         int i = repairService.updateNewOrder(repair);
-        if(i == 1) {
+        if (i == 1) {
             return Result.success();
         } else {
-            return Result.error("-1","更新失败");
+            return Result.error("-1", "更新失败");
         }
     }
-    
+
     /**
      * 删除订单
      */
     @DeleteMapping("/delete/{id}")
     public Result<?> delete(@PathVariable Integer id) {
         int i = repairService.deleteOrder(id);
-        if(i == 1) {
+        if (i == 1) {
             return Result.success();
         } else {
-            return Result.error("-1","删除失败");
+            return Result.error("-1", "删除失败");
         }
     }
-    
+
     /**
      * 查找订单
      */
@@ -61,15 +61,14 @@ public class RepairController {
     public Result<?> findPage(@RequestParam(defaultValue = "1") Integer pageNum,
                               @RequestParam(defaultValue = "10") Integer pageSize,
                               @RequestParam(defaultValue = "") String search) {
-        @SuppressWarnings("rawtypes")
-        Page page = repairService.find(pageNum,pageSize,search);
-        if(page != null) {
+        Page page = repairService.find(pageNum, pageSize, search);
+        if (page != null) {
             return Result.success(page);
         } else {
-            return Result.error("-1","查询失败");
+            return Result.error("-1", "查询失败");
         }
     }
-    
+
     /**
      * 个人申报报修 分页查询
      */
@@ -79,25 +78,24 @@ public class RepairController {
                                     @RequestParam(defaultValue = "") String search,
                                     @PathVariable String name) {
         System.out.println(name);
-        @SuppressWarnings("rawtypes")
-        Page page = repairService.individualFind(pageNum,pageSize,search,name);
-        if(page != null) {
+        Page page = repairService.individualFind(pageNum, pageSize, search, name);
+        if (page != null) {
             return Result.success(page);
         } else {
-            return Result.error("-1","查询失败");
+            return Result.error("-1", "查询失败");
         }
     }
-    
+
     /**
      * 首页顶部：报修统计
      */
     @GetMapping("/orderNum")
     public Result<?> orderNum() {
         int num = repairService.showOrderNum();
-        if(num >= 0) {
+        if (num >= 0) {
             return Result.success(num);
         } else {
-            return Result.error("-1","报修统计查询失败");
+            return Result.error("-1", "报修统计查询失败");
         }
     }
 }

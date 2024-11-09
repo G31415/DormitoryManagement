@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AdjustRoom {
-    
+
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
     @TableField(value = "username")

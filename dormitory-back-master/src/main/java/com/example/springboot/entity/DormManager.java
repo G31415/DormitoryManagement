@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 
 @TableName(value = "dorm_manager")
 public class DormManager {
-    
+
     @TableId("username")
     private String username;
     @TableField("password")

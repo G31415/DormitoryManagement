@@ -12,11 +12,11 @@ import javax.annotation.Resource;
 
 @Service
 public class AdjustRoomServiceImpl extends ServiceImpl<AdjustRoomMapper, AdjustRoom> implements AdjustRoomService {
-    
-    
+
+
     @Resource
     private AdjustRoomMapper adjustRoomMapper;
-    
+
     /**
      * 添加调宿申请
      */
@@ -25,21 +25,19 @@ public class AdjustRoomServiceImpl extends ServiceImpl<AdjustRoomMapper, AdjustR
         int insert = adjustRoomMapper.insert(adjustRoom);
         return insert;
     }
-    
+
     /**
      * 查找调宿申请
      */
-    @SuppressWarnings("rawtypes")
     @Override
-    public Page find(Integer pageNum,Integer pageSize,String search) {
-        Page page = new Page<>(pageNum,pageSize);
+    public Page find(Integer pageNum, Integer pageSize, String search) {
+        Page page = new Page<>(pageNum, pageSize);
         QueryWrapper<AdjustRoom> qw = new QueryWrapper<>();
-        qw.like("username",search);
-        @SuppressWarnings("unchecked")
-        Page orderPage = adjustRoomMapper.selectPage(page,qw);
+        qw.like("username", search);
+        Page orderPage = adjustRoomMapper.selectPage(page, qw);
         return orderPage;
     }
-    
+
     /**
      * 删除调宿申请
      */
@@ -48,8 +46,8 @@ public class AdjustRoomServiceImpl extends ServiceImpl<AdjustRoomMapper, AdjustR
         int i = adjustRoomMapper.deleteById(id);
         return i;
     }
-    
-    
+
+
     /**
      * 更新调宿申请
      */
@@ -58,6 +56,6 @@ public class AdjustRoomServiceImpl extends ServiceImpl<AdjustRoomMapper, AdjustR
         int i = adjustRoomMapper.updateById(adjustRoom);
         return i;
     }
-    
-    
+
+
 }

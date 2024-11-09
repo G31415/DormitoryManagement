@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 
 @TableName(value = "visitor")
 public class Visitor {
-    
+
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
     @TableField("name")
@@ -33,5 +33,5 @@ public class Visitor {
     private String visitTime;
     @TableField("content")
     private String content;
-    
+
 }
